@@ -1,0 +1,45 @@
+.explained{
+	width: 40%;
+	border: #2b292b solid 5px;
+	color: #2b292b;
+	background-color: rgba(250,250,250,0.5);
+	margin-top: 5%;
+	padding: 4vw 5em;
+	border-radius: 20px;
+}
+.howto{
+	align-items:  center;
+	font-family: "Russo One", sans-serif;
+	font-weight: 900;
+	font-size: 1.5em;
+	letter-spacing: 1px;
+}
+p{
+	font-family: "Mukta Malar", sans-serif;;
+	font-weight: 500;
+	font-size: 1.1em;
+	text-align: justify;
+}
+div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.backBtn{
+	width: 9.5vw;
+	border: 3px solid white;
+	top:1vw;
+	left: 2vw;
+	color: white;
+	background-color: #2b292b;
+	position: absolute;
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	font-weight: 900;
+	font-size: 1vw;
+  cursor: pointer;
+}
+.backBtn:hover{
+	background-color: rgba(0,0,0,0.85);
+}

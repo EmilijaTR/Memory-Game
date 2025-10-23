@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Memory Game</title>
+	<link rel="shortcut defaultImage" type="image/jpg" href="favdefaultImage.jpg">
+	<link rel="stylesheet" type="text/css" href="playPage.css">
+	<meta name="imageport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Russo+One&display=swap" rel="stylesheet">
+<body>
+	<div id="victory" class='notification' onclick="location.reload()"> 
+		You Won! 
+		<br>
+		<button class="retry">Retry</button>
+	</div>
+	<div id="lost" class='notification' onclick="location.reload()"> 
+		You Lost!
+		<br>
+		<button class="retry">Retry</button>
+	</div>
+
+    <div class="timer">Time left:<br><center><spam>00</spam>s</center></div>
+    <div class="flips">Flips left:<br><center>10</center></div>
+
+	<img src="shuffle.png" class="shuffle" onclick="shuffleCards()">
+	
+	<div class="cardSection">
+      <ul class="cards">
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card1.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card1.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card2.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card2.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card3.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card3.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card4.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card4.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card5.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card5.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card6.webp" alt="image">
+          </div>
+        </li>
+        <li class="card">
+          <div class="image front">
+            <img src="backcard.jpg" alt="defaultImage">
+          </div>
+          <div class="image back">
+            <img src="card6.webp" alt="image">
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+	
+	<a href="instructionsPage.html"><div class="instructions">Instructions</div></a>
+	<a href="meaningsPage.html"><div class="meaning">Card Meanings</div></a>
+	
+
+	<script>
+		const cards = document.querySelectorAll(".card");
+		let card1, card2;
+		let isPlaying = false;
+		let clickableCards = true; //cards will be unclickable until the first two cards are unfliped or matched
+
+		let matchedCards=0;	//if this is 6, that means the user won
+		let flipsCount;
+		flipTag = document.querySelector(".flips center");
+		
+		
+		timeTag = document.querySelector(".timer spam");
+		let maxTime = 30;	//defining this here just so if I want to change it, I will need to change it it this place only
+		let timeLeft = maxTime;
+		let timer;
+
+		//adding onclick for every card
+		cards.forEach(function(card){
+			card.addEventListener("click", flipCard);
+		});
+
+		
+		function flipCard(e){
+			let clickedCard = e.target;	//the target property returns the element where the event occured
+			if(!isPlaying) {		//checking if the user started playing
+		        isPlaying = true;
+		        timer = setInterval(Timer, 1000);	//if the user started playing the timer starts
+		    }
+			if(clickedCard !== card1 && clickableCards && timeLeft > 0){ //prevent user from clicking the same card twice, the user hasn't won, still has time
+				Flips();	//calling it here so for every flip it can check whether the user still has flips left
+				clickedCard.classList.add("flip");	//fliping the card
+				if(!card1){		//if the first card doesn't have value, that means that the user has clicked the first card
+					return card1 = clickedCard;	
+				}
+				card2 = clickedCard;
+
+				clickableCards = false;	// every other card is not clickable when the two cards are clicked
+
+				//getting the actual images for the clicked cards
+				let card1Img = card1.querySelector(".back img").src;	
+				let card2Img = card2.querySelector(".back img").src;
+
+				// checking if the clicked cards are the same
+				matchCards(card1Img, card2Img);
+			}
+		}
+
+		function matchCards(img1, img2){
+			if(img1 === img2){
+				matchedCards++; //increment if they matched
+				// the cards in total are 12,  so if 6 pairs are matched that means every pair is matched(also checks if the user still had time left)
+				if(matchedCards == 6 && timeLeft > 0){
+					setTimeout(()=> {
+						return displayEnd("victory");
+					}, 500);
+					
+				}
+				//the cards are matched, so they stay on the flipped side
+				card1.removeEventListener("click", flipCard);
+				card2.removeEventListener("click", flipCard);
+				card1 = card2 = ""; //setting both values to blank
+				return clickableCards = true;	//the user can click the cards now
+				// also returning because the function doesn't need to go further
+			}
+			setTimeout(() => {	
+				//if they don't match, add shake class after 400ms
+				card1.classList.add("shake");
+				card2.classList.add("shake");
+			}, 400);
+			setTimeout(() => {	
+				//then removing both shake and flip after 1200 ms
+				card1.classList.remove("shake", "flip");
+				card2.classList.remove("shake", "flip");
+				card1 = card2 = ""; // setting both values to blank
+				clickableCards = true;
+			}, 1200);
+
+		}
+
+		function shuffleCards(){
+			//basically reseting everything
+			timeLeft = maxTime;	//reset time
+			matchedCards = 0 ;
+			flipsCount = 20;
+			flipTag.innerHTML = flipsCount;
+			card1 = card2 = ""; //resetting to their default value
+			clickableCards = true;
+			isPlaying = false;
+			clearInterval(timer);
+    		timeTag.innerText = timeLeft;
+
+			let arr = [1,1,2,2,3,3,4,4,5,5,6,6];
+			// shuffling the array of indexes
+			for (let i = 0; i <  arr.length; i++) {
+			    const randI = Math.floor(Math.random() * (i + 1));
+			    let temp = arr[i];
+			    arr[i]=arr[randI];
+			    arr[randI]=temp;
+			 }
+			cards.forEach(function(card,index){
+				card.classList.remove("flip");
+				let imgTag = card.querySelector(".back img");
+				imgTag.src = `card${arr[index]}.webp`;	//changing the back image
+				card.addEventListener("click", flipCard);
+			})
+		}
+
+		function Timer() {
+		    if(timeLeft <= 0) {
+				  return displayEnd("lost");
+		    }
+		    timeLeft--;
+		    timeTag.innerHTML = timeLeft;
+		}
+		function Flips(){
+			if(flipsCount == 0){
+				return displayEnd("lost");
+			}
+			flipsCount--;
+			flipTag.innerHTML=flipsCount;
+		}
+
+
+		function displayEnd(condId){
+			clearInterval(timer);
+			document.getElementById(condId).style.display="block";
+		}
+		
+		shuffleCards();	//calling it here so on every restart they will shuffle
+	</script>
+</body>
+</html>

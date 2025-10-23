@@ -1,0 +1,125 @@
+html{
+	background-color: white; /* For browsers that do not support gradients */
+  	background-image: linear-gradient(to bottom right, rgb(251, 141, 103), rgb(248, 71, 165),rgb(80, 98, 226));
+  	background-size: cover;
+  	min-height: 100%;
+}
+body{
+	  font-family:  Verdana;
+}
+img{
+	width: 12vw;
+	height: 26vh;
+	border-radius: 10%;
+	opacity: 0.6;
+	margin: 2vw;
+	z-index: -1;
+	position: absolute;
+}
+
+.img1{
+	top: -2%;
+	left: 0%;
+}
+
+.img2{
+	top: -2%;
+	left: 17%;
+}
+.img3{
+	top: -2%;
+	left: 34%;
+}
+.img4{
+	top: -2%;
+	left: 51%;
+}
+.img5{
+	top: -2%;
+	left: 67%;
+}
+.img6{
+	top: -2%;
+	left: 84%;
+}
+
+
+.img7{
+	top: 33%;
+	left: 0%;
+}
+
+.img8{
+	top: 33%;
+	left: 17%;
+}
+
+.img11{
+	top: 33%;
+	left: 67%;
+}
+.img12{
+	top: 33%;
+	left: 84%;
+}
+
+.img13{
+	top: 67%;
+	left: 0%;
+}
+
+.img14{
+	top: 67%;
+	left: 17%;
+}
+.img15{
+	top: 67%;
+	left: 34%;
+}
+.img16{
+	top: 67%;
+	left: 51%;
+}
+.img17{
+	top: 67%;
+	left: 67%;	
+}
+.img18{
+	top: 67%;
+	left: 84%;
+}
+
+.flip{
+	animation: flipCard 5s infinite;
+}
+@keyframes flipCard {
+  0% {transform: rotateY(0deg);}
+  50% {transform: rotateY(180deg);}
+  100% {transform: rotateY(0deg);}
+}
+
+.btn{
+	top: 33%;
+	left: 34%;
+	cursor: pointer;
+	border-radius: 17px;
+	margin: 2vw;
+	border: 3px solid white;
+	background-color: #2b292b;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 29%;
+	height: 25vh;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 25vh; 
+
+	font-size: 3vw;
+	color: white;
+	font-weight: 1000;
+	letter-spacing: 0.05vw;
+} 
+button:hover{
+		letter-spacing: 0.5vw;
+}

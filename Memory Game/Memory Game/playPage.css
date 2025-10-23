@@ -1,0 +1,197 @@
+html{
+	min-height: 100%; 
+	background-color: white; /* For browsers that do not support gradients */
+  	background-image: linear-gradient(to bottom right, rgb(251, 141, 103), rgb(248, 71, 165),rgb(80, 98, 226));
+  	background-size: cover;
+}
+body{
+	  font-family: Verdana;
+}
+
+.cardSection{
+	box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+	width: 60%;
+	margin-top: 3vw;
+	margin-left: 19vw;
+}
+.cards, .card, .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+	height: 82vh;
+	width: 70vw;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.cards .card{
+	cursor: pointer;
+	list-style: none;
+	user-select: none;	
+	position: relative;
+    height: calc(100% / 3 - 2.8vh);
+    width: calc(100% / 4 - 2.5vw);
+}
+ .card .image{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	border-radius: 7px;
+	pointer-events: none;
+	backface-visibility: hidden;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+	transition: transform 0.25s linear;
+	border-radius: 10%;
+}
+.card .front img{
+	width: 100%;
+	height: 100%;
+	border-radius: 10%;
+}
+.card .back img{
+	width: 100%;
+	height: 100%;
+	border-radius: 10%;
+}
+.card .back{
+	transform: rotateY(-180deg);
+}
+.card.flip .back{
+	transform: rotateY(0);
+}
+.card.flip .front{
+	transform: rotateY(180deg);
+}
+.card.shake{
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+  0%, 100%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-13px);
+  }
+  40%{
+    transform: translateX(13px);
+  }
+  60%{
+    transform: translateX(-8px);
+  }
+  80%{
+    transform: translateX(8px);
+  }
+}
+.shuffle{
+	top: 45vh;
+	left: 5vw;
+	border-radius: 50%;
+	position: absolute;
+	width: 5%;
+	transition: transform .7s ease-in-out;
+	cursor: pointer;
+}
+.shuffle:hover {
+  transform: rotate(360deg);
+}
+
+.instructions, .meaning{
+	width: 10%;
+	border: 3px solid white;
+	right: 2em;
+	position: absolute;
+	color: white;
+	background-color: rgba(250,250,250,0.4);
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	font-weight: 900;
+	font-size: 1vw;
+}
+.instructions{
+	bottom: 11vw;
+}
+.meaning{
+	bottom: 6vw;
+}
+.instructions:hover, .meaning:hover{
+	background-color: rgba(250,250,250,0.6);
+}
+
+.timer{
+	position: absolute;
+	top: 8vh;
+	left: 2vw;
+	font-family: 'Inconsolata', sans-serif;
+	font-weight: 900;
+	font-size: 1.8vw;
+	color: white;
+
+	background-color: rgba(250,250,250,0.2);
+	border: 3px solid white;
+	border-color: rgba(250,250,250,0.7);
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	width: 10%;
+
+}
+.flips{
+	position: absolute;
+	top: 25vh;
+	left: 2vw;
+	font-family: 'Inconsolata', sans-serif;
+	font-weight: 900;
+	font-size: 1.8vw;
+	color: white;
+
+	background-color: rgba(250,250,250,0.2);
+	border: 3px solid white;
+	border-color: rgba(250,250,250,0.7);
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	width: 10%;
+}
+.notification{
+	border: 0.5vh solid white;
+	position: absolute;
+	left: 0; 
+	right: 0; 
+	margin:auto;
+	margin-top:10vw;
+	z-index: 100;
+	width: 30vw;
+	height: 16vw;
+	font-size: 5vw;
+	text-align: center;
+	background-color: #161717;
+	color:white;
+
+	display: none;
+
+	border-radius: 8%;
+	padding-top: 5vh;
+}
+.retry{
+	width: 30%;
+	border: 3px solid white;
+	
+	color: white;
+	background-color: rgba(250,250,250,0.3);
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	font-weight: 900;
+	font-size: 1vw;
+	cursor: pointer;
+}
+
+/*Links from where I looked for ideas:
+https://www.w3schools.com/
+https://www.codingnepalweb.com/build-memory-card-game-html-javascript/*/

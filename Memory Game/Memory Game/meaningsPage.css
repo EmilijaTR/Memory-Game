@@ -1,0 +1,58 @@
+html{
+	background-color: white; /* For browsers that do not support gradients */
+  	background-image: linear-gradient(to bottom right, rgb(251, 141, 103), rgb(248, 71, 165),rgb(80, 98, 226));
+  	background-size: cover;
+}
+.back{
+	width: 9.5vw;
+	border: 3px solid white;
+	top:1vw;
+	left: 2vw;
+	color: white;
+	background-color: #2b292b;
+	position: absolute;
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.5em;
+	font-weight: 900;
+	font-size: 1vw;
+  cursor: pointer;
+}
+.back:hover{
+	background-color: rgba(0,0,0,0.85);
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 19%;
+  border-radius: 5px;
+  border: 2px solid #2b292b;
+  margin: 2%;
+  display: table;
+  background-color: rgba(250,250,250,0.6);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+}
+
+.container {
+  color: #2b292b;
+  text-align: center;
+  padding: 0% 10%;
+  font-family: "Mukta Malar";
+  font-size: 1.2vw;
+}
+.item{
+	float: left;
+}
+.main{
+	margin-left: 15%;
+	margin-top: 3%;
+}

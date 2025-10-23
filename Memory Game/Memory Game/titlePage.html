@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Memory Game</title>
+	<link rel="shortcut icon" type="image/jpg" href="favicon.jpg">
+	<link rel="stylesheet" type="text/css" href="titlePage.css">
+	<!--FONT LINK-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <img src="backcard.jpg" class="img1">
+  <img src="backcard.jpg" class="img2">
+  <img src="backcard.jpg" class="img3">
+  <img src="backcard.jpg" class="img4">
+  <img src="backcard.jpg" class="img5">
+  <img src="backcard.jpg" class="img6">
+
+  <img src="backcard.jpg" class="img7">
+  <img src="backcard.jpg" class="img8">
+  <button class="btn" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" onclick="clickPlay(this)">Memory Game</button>
+  <img src="backcard.jpg" class="img11">
+  <img src="backcard.jpg" class="img12">
+
+  <img src="backcard.jpg" class="img13">
+  <img src="backcard.jpg" class="img14">
+  <img src="backcard.jpg" class="img15">
+  <img src="backcard.jpg" class="img16">
+  <img src="backcard.jpg" class="img17">
+  <img src="backcard.jpg" class="img18">
+
+<script>
+  //Flipping the cards
+  const images = document.getElementsByTagName("img");
+
+  setInterval(() => {                                             // The setInterval() method calls a function at specified intervals (in milliseconds)
+      let randNum1 = Math.floor(Math.random() * images.length);   //generating random index
+      let randNum2 = Math.floor(Math.random() * images.length);
+
+      while (randNum1 == randNum2){                              //if the indexes are the same, change the other one
+        randNum2 = Math.floor(Math.random() * images.length);
+      }
+      
+      let randomImg1 = images[randNum1];  // get the random image at that index
+      let randomImg2 = images[randNum2];
+      //The classList property returns the CSS classnames of an element and add() adds one or more tokens to the list, saw it od w3
+      randomImg1.classList.add(`flip`);                           // add the animation class to the image
+      randomImg2.classList.add(`flip`);
+
+      setTimeout(() => {                                          // The setTimeout() removes the annimation because if it didn't, the card would flip forever
+        randomImg1.classList.remove(`flip`);                      // remove the animation class after 2 seconds
+        randomImg2.classList.remove(`flip`);
+      }, 2000);
+    }, 2000);                                                     // repeating for every 2 seconds
+                                                      
+
+  //Clicking play
+
+  function mouseOver(obj) {
+    obj.innerHTML = "PLAY";
+  }
+
+  function mouseOut(obj) {
+    obj.innerHTML = "Memory Game";
+  }
+
+  function clickPlay(obj) {
+      window.location.href = 'playPage.html';
+  }
+
+</script>
+</body>
+</html>
