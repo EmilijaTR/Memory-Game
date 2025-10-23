@@ -14,6 +14,7 @@ A tarot card themed memory matching game built with HTML, CSS, and JavaScript.
 Clone this repository:
 ```bash
    git clone https://github.com/EmilijaTR/Memory-Game.git
+```
 Open index.html in your web browser
 
 ##  How to Play
