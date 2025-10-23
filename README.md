@@ -15,7 +15,7 @@ Clone this repository:
 ```bash
    git clone https://github.com/EmilijaTR/Memory-Game.git
 ```
-Open index.html in your web browser
+Open titlePage.html in your web browser
 
 ##  How to Play
 Click on cards to flip them over
